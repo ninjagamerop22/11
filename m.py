@@ -14,14 +14,14 @@ logging.basicConfig(filename='bot_actions.log', level=logging.INFO,
                     format='%(asctime)s - %(message)s')
 
 # Initialize the bot with the token from environment variable
-TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TOKEN = os.getenv('7558572672:AAGpCvequdXrKC752TKUYeQu21Ds77pRkZ4')
 if not TOKEN:
     raise ValueError("Please set your bot token in the environment variables!")
 
 bot = telebot.TeleBot(TOKEN)
 
 # List of authorized user IDs
-AUTHORIZED_USERS = [5113311276, 6800732852]  # Replace with actual user chat IDs
+AUTHORIZED_USERS = [1240179115]  # Replace with actual user chat IDs
 
 # Regex pattern to match the IP, port, and duration
 pattern = re.compile(r"(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)\s(\d{1,5})\s(\d+)")
@@ -65,7 +65,7 @@ def send_welcome(message):
         "🔹 Want to *stop* all ongoing actions? Just type:\n"
         "`stop all`\n\n"
         "🔐 *Important:* Only authorized users can use this bot in private chat. 😎\n\n"
-        "🤖 _This bot was made by Ibr._"
+        "🤖 _This bot was made by @NINJAGAMEROP._"
     )
     bot.reply_to(message, welcome_text, parse_mode='Markdown', reply_markup=markup)
 
@@ -85,7 +85,7 @@ def handle_message(message):
     chat_type = message.chat.type
     
     if chat_type == 'private' and user_id not in AUTHORIZED_USERS:
-        bot.reply_to(message, '⛔ *You are not authorized to use this bot.* Please contact the admin if you believe this is an error. 🤔\n\n_This bot was made by Ibr._', parse_mode='Markdown')
+        bot.reply_to(message, '⛔ *You are not authorized to use this bot.* Please contact the admin if you believe this is an error. 🤔\n\n_This bot was made by @NINJAGAMEROP._', parse_mode='Markdown')
         return
 
     text = message.text.strip().lower()
@@ -104,10 +104,10 @@ def handle_message(message):
             duration = random.randint(80, 120)
 
             if not is_valid_ip(ip):
-                bot.reply_to(message, "❌ *Invalid IP address!* Please provide a valid IP.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+                bot.reply_to(message, "❌ *Invalid IP address!* Please provide a valid IP.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
                 return
             if not is_valid_port(port):
-                bot.reply_to(message, "❌ *Invalid Port!* Port must be between 1 and 65535.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+                bot.reply_to(message, "❌ *Invalid Port!* Port must be between 1 and 65535.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
                 return
 
             bot.reply_to(message, (
@@ -120,7 +120,7 @@ def handle_message(message):
             ), parse_mode='Markdown')
             run_action(user_id, message, ip, port, duration)
         else:
-            bot.reply_to(message, "⚠️ *Oops!* Please provide the IP and port in the correct format: `<ip> <port>`.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+            bot.reply_to(message, "⚠️ *Oops!* Please provide the IP and port in the correct format: `<ip> <port>`.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
 
     elif user_mode == 'manual':
         # In manual mode, expect IP, port, and duration
@@ -129,13 +129,13 @@ def handle_message(message):
             ip, port, duration = match.groups()
 
             if not is_valid_ip(ip):
-                bot.reply_to(message, "❌ *Invalid IP address!* Please provide a valid IP.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+                bot.reply_to(message, "❌ *Invalid IP address!* Please provide a valid IP.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
                 return
             if not is_valid_port(port):
-                bot.reply_to(message, "❌ *Invalid Port!* Port must be between 1 and 65535.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+                bot.reply_to(message, "❌ *Invalid Port!* Port must be between 1 and 65535.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
                 return
             if not is_valid_duration(duration):
-                bot.reply_to(message, "❌ *Invalid Duration!* The duration must be between 1 and 600 seconds.\n\n_This bot was made by Ibr._", parse_mode='Markdown')
+                bot.reply_to(message, "❌ *Invalid Duration!* The duration must be between 1 and 600 seconds.\n\n_This bot was made by @NINJAGAMEROP._", parse_mode='Markdown')
                 return
 
             bot.reply_to(message, (
@@ -144,7 +144,7 @@ def handle_message(message):
                 f"🔌 *Port:* `{port}`\n"
                 f"⏳ *Duration:* `{duration} seconds`\n\n"
                 "Hang tight, action is being processed... ⚙️\n\n"
-                "_This bot was made by Ibr._"
+                "_This bot was made by @NINJAGAMEROP._"
             ), parse_mode='Markdown')
             run_action(user_id, message, ip, port, duration)
         else:
@@ -152,7 +152,7 @@ def handle_message(message):
                 "⚠️ *Oops!* The format looks incorrect. Let's try again:\n"
                 "`<ip> <port> <duration>`\n\n"
                 "For example, type `192.168.1.100 8080 60` to run an action for 60 seconds.\n\n"
-                "_This bot was made by Ibr._"
+                "_This bot was made by @NINJAGAMEROP._"
             ), parse_mode='Markdown')
 
 def run_action(user_id, message, ip, port, duration):
@@ -182,7 +182,7 @@ def check_process_status(message, process, ip, port, duration):
         f"🔌 *Port:* `{port}`\n"
         f"⏱ *Duration:* `{duration} seconds`\n\n"
         "💡 *Need more help?* Just send me another request, I'm here to assist! 🤗\n\n"
-        "_This bot was made by Ibr._"
+        "_This bot was made by @NINJAGAMEROP._"
     ), parse_mode='Markdown')
 
 def stop_all_actions(message):
@@ -191,7 +191,7 @@ def stop_all_actions(message):
             process.terminate()
             process.wait()
             processes.pop(pid, None)
-        bot.reply_to(message, '🛑 *All actions have been stopped.* 😎\n\nFeel free to start a new action anytime! 🚀\n\n_This bot was made by Ibr._', parse_mode='Markdown')
+        bot.reply_to(message, '🛑 *All actions have been stopped.* 😎\n\nFeel free to start a new action anytime! 🚀\n\n_This bot was made by @NINJAGAMEROP._', parse_mode='Markdown')
     else:
         bot.reply_to(message, '🔕 *No actions are currently running.* 😴\n\n_This bot was made by Ibr._', parse_mode='Markdown')
 
