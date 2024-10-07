@@ -14,7 +14,7 @@ logging.basicConfig(filename='bot_actions.log', level=logging.INFO,
                     format='%(asctime)s - %(message)s')
 
 # Initialize the bot with the token from environment variable
-TOKEN = os.getenv('7558572672:AAGpCvequdXrKC752TKUYeQu21Ds77pRkZ4')
+TOKEN = os.getenv('7558572672:AAGsMVU9LP2fUlnlDMqgAlHD81HBPWxGj68')
 if not TOKEN:
     raise ValueError("Please set your bot token in the environment variables!")
 
